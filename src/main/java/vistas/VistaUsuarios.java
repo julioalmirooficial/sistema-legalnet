@@ -1,9 +1,9 @@
-
 package vistas;
 
 import controlador.CtrUsuarios;
 import atributos.AttrPersona;
 import modelos.ModUsuarios;
+import utilidades.EstilosDeTablas;
 
 public class VistaUsuarios extends javax.swing.JPanel {
 
@@ -15,8 +15,11 @@ public class VistaUsuarios extends javax.swing.JPanel {
         ModUsuarios modUsuarios = new ModUsuarios();
         CtrUsuarios ctrUsuarios = new CtrUsuarios(modPersona, modUsuarios, this);
         ctrUsuarios.listar();
-    }
 
+        EstilosDeTablas estilos = new EstilosDeTablas();
+        estilos.pintar(tablaUsuarios);
+        btnModificar.setEnabled(false);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -274,11 +277,13 @@ public class VistaUsuarios extends javax.swing.JPanel {
             txtPassword.setText(tablaUsuarios.getValueAt(fila, 4).toString());
             cbxEstado.setSelectedItem(tablaUsuarios.getValueAt(fila, 5).toString());
             cbxTipo.setSelectedItem(tablaUsuarios.getValueAt(fila, 1).toString());
+            btnGuardar.setEnabled(false);
+            btnModificar.setEnabled(true);
         }
     }//GEN-LAST:event_tablaUsuariosMouseClicked
 
     private void txtBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyTyped
-        
+
         AttrPersona modPersona = new AttrPersona();
         ModUsuarios modUsuarios = new ModUsuarios();
         CtrUsuarios ctrUsuarios = new CtrUsuarios(modPersona, modUsuarios, this);

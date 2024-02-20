@@ -9,6 +9,7 @@ import modelos.ModArticulos;
 import modelos.ModEstadisticaArticulos;
 import static principal.Dashboard.window;
 import utilidades.CambiarPanel;
+import utilidades.EstilosDeTablas;
 
 public class VistaMostrarArticulos extends javax.swing.JPanel {
 
@@ -21,6 +22,8 @@ public class VistaMostrarArticulos extends javax.swing.JPanel {
         ModArticulos modData = new ModArticulos();
         CtrArticulos ctr = new CtrArticulos(attr, modData, this, "");
         ctr.listarArticulos(VistaMostrarCategorias.id, "");
+        EstilosDeTablas estilos = new EstilosDeTablas();
+        estilos.pintar(tablaArticulos);
     }
 
     /**

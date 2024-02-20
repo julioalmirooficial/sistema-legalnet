@@ -1,23 +1,23 @@
 package vistas;
 
-import atributos.AttrAbogados;
-import controlador.CtrAbogados;
-import modelos.ModAbogados;
+import atributos.AttrPersona;
+import controlador.CtrUsuarios;
+import modelos.ModUsuarios;
 import utilidades.EstilosDeTablas;
 
-public class VistaMostrarAbogados extends javax.swing.JPanel {
+public class VistaMostrarUsuariosReportados extends javax.swing.JPanel {
 
     public static int id = 0;
 
-    public VistaMostrarAbogados() {
+    public VistaMostrarUsuariosReportados() {
         initComponents();
-        AttrAbogados attr = new AttrAbogados();
-        ModAbogados modData = new ModAbogados();
-        CtrAbogados ctr = new CtrAbogados(attr, modData, this,"");
-        ctr.listarAbogados();
+        AttrPersona attr = new AttrPersona();
+        ModUsuarios modData = new ModUsuarios();
+        CtrUsuarios ctr = new CtrUsuarios(attr, modData, this,"");
+        ctr.listarUsuariosReportados();
         
         EstilosDeTablas estilos = new EstilosDeTablas();
-        estilos.pintar(tablaAbogados);
+        estilos.pintar(tablaUsuariosReportados);
     }
 
     /**
@@ -30,26 +30,15 @@ public class VistaMostrarAbogados extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        txtBuscar = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaAbogados = new javax.swing.JTable();
+        tablaUsuariosReportados = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtBuscar.setBackground(new java.awt.Color(255, 255, 255));
-        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtBuscarKeyTyped(evt);
-            }
-        });
-
-        jLabel1.setText("Buscar");
-
-        tablaAbogados.setBackground(new java.awt.Color(255, 255, 255));
-        tablaAbogados.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        tablaAbogados.setModel(new javax.swing.table.DefaultTableModel(
+        tablaUsuariosReportados.setBackground(new java.awt.Color(255, 255, 255));
+        tablaUsuariosReportados.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        tablaUsuariosReportados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -60,17 +49,17 @@ public class VistaMostrarAbogados extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tablaAbogados.setRowHeight(40);
-        tablaAbogados.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablaUsuariosReportados.setRowHeight(40);
+        tablaUsuariosReportados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaAbogadosMouseClicked(evt);
+                tablaUsuariosReportadosMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tablaAbogados);
+        jScrollPane1.setViewportView(tablaUsuariosReportados);
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(66, 66, 66));
-        jLabel2.setText("ABOGADOS ACTIVOS");
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(33, 122, 206));
+        jLabel2.setText("Usuarios reportados 👇");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -80,14 +69,10 @@ public class VistaMostrarAbogados extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(0, 646, Short.MAX_VALUE))
+                        .addComponent(jLabel2)
+                        .addGap(0, 824, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtBuscar, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1019, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1019, Short.MAX_VALUE)
                         .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
@@ -95,12 +80,8 @@ public class VistaMostrarAbogados extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addGap(27, 27, 27)
-                .addComponent(jLabel1)
-                .addGap(0, 0, 0)
-                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -118,7 +99,7 @@ public class VistaMostrarAbogados extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tablaAbogadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaAbogadosMouseClicked
+    private void tablaUsuariosReportadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaUsuariosReportadosMouseClicked
 //        int fila = tablaAbogados.getSelectedRow();
 //        if (fila >= 0) {
 //            id = Integer.parseInt(tablaAbogados.getValueAt(fila, 0).toString());
@@ -128,23 +109,13 @@ public class VistaMostrarAbogados extends javax.swing.JPanel {
 //             
 //            new CambiarPanel(window, articulos);
 //        }
-    }//GEN-LAST:event_tablaAbogadosMouseClicked
-
-    private void txtBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyTyped
-       
-        AttrAbogados attr = new AttrAbogados();
-        ModAbogados modData = new ModAbogados();
-        CtrAbogados ctr = new CtrAbogados(attr, modData, this,"");
-        ctr.listarAbogados();
-    }//GEN-LAST:event_txtBuscarKeyTyped
+    }//GEN-LAST:event_tablaUsuariosReportadosMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    public static javax.swing.JTable tablaAbogados;
-    public static javax.swing.JTextField txtBuscar;
+    public static javax.swing.JTable tablaUsuariosReportados;
     // End of variables declaration//GEN-END:variables
 }

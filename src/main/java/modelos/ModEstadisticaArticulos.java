@@ -19,7 +19,7 @@ public class ModEstadisticaArticulos {
         Connection cn = conexion.conectar();
 
         DefaultTableModel model;
-        String[] headers = {"DESCRIPCION", "TOTAL",};
+        String[] headers = {"DESCRIPCION", "TOTAL DE VISTAS",};
         String[] registros = new String[headers.length];
         model = new DefaultTableModel(null, headers);
         if (tipo.equals("CATEGORIA")) {
@@ -46,7 +46,7 @@ public class ModEstadisticaArticulos {
 
             while (rs.next()) {
                 registros[0] = rs.getString("descripcion");
-                registros[1] = rs.getString("total");
+                registros[1] = rs.getString("total") +" VISTAS";
                 model.addRow(registros);
             }
             return model;

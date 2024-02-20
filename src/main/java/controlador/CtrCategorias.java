@@ -40,16 +40,16 @@ public class CtrCategorias implements ActionListener{
 
     public void listar() {
         DefaultTableModel model;
-        model = modData.listarUsuarios(frm.txtBuscar.getText());
-        frm.tablaUsuarios.setModel(model);
-        frm.tablaUsuarios.getColumnModel().getColumn(0).setMaxWidth(0);
-        frm.tablaUsuarios.getColumnModel().getColumn(0).setMinWidth(0);
-        frm.tablaUsuarios.getColumnModel().getColumn(0).setPreferredWidth(0);
-        frm.tablaUsuarios.setDefaultEditor(Object.class, null);
+        model = modData.listar(frm.txtBuscar.getText());
+        frm.tablaCategorias.setModel(model);
+        frm.tablaCategorias.getColumnModel().getColumn(0).setMaxWidth(0);
+        frm.tablaCategorias.getColumnModel().getColumn(0).setMinWidth(0);
+        frm.tablaCategorias.getColumnModel().getColumn(0).setPreferredWidth(0);
+        frm.tablaCategorias.setDefaultEditor(Object.class, null);
     }
     public void listarCategorias() {
         DefaultTableModel model;
-        model = modData.listarUsuarios(leer.txtBuscar.getText());
+        model = modData.listar(leer.txtBuscar.getText());
         leer.tablaCategorias.setModel(model);
         leer.tablaCategorias.getColumnModel().getColumn(0).setMaxWidth(0);
         leer.tablaCategorias.getColumnModel().getColumn(0).setMinWidth(0);
@@ -67,6 +67,8 @@ public class CtrCategorias implements ActionListener{
                     JOptionPane.showMessageDialog(frm, "Categoria registrado con éxito");
                     limpiar();
                     listar();
+                    frm.btnGuardar.setEnabled(true);
+                    frm.btnModificar.setEnabled(false);
                 } else {
                     JOptionPane.showMessageDialog(frm, "Error al registrar categoría", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -77,6 +79,8 @@ public class CtrCategorias implements ActionListener{
                     JOptionPane.showMessageDialog(frm, "Categoría modificado con éxito");
                     limpiar();
                     listar();
+                    frm.btnGuardar.setEnabled(true);
+                    frm.btnModificar.setEnabled(false);
                 } else {
                     JOptionPane.showMessageDialog(frm, "Error al modificar categoría", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -87,6 +91,8 @@ public class CtrCategorias implements ActionListener{
             if (modData.eliminar(attr)) {
                 JOptionPane.showMessageDialog(frm, "Categoría eliminado con éxito");
                 listar();
+            frm.btnModificar.setEnabled(false);
+            frm.btnGuardar.setEnabled(true);
             } else {
                 JOptionPane.showMessageDialog(frm, "Error al eliminar categoría", "Error", JOptionPane.ERROR_MESSAGE);
             }
@@ -96,6 +102,8 @@ public class CtrCategorias implements ActionListener{
         }
         if (e.getSource() == frm.btnLimpiar) {
             limpiar();
+            frm.btnModificar.setEnabled(false);
+            frm.btnGuardar.setEnabled(true);
         }
 
     }

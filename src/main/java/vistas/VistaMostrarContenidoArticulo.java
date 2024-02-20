@@ -42,6 +42,7 @@ public class VistaMostrarContenidoArticulo extends javax.swing.JPanel {
         lblTitulo.setForeground(new java.awt.Color(66, 66, 66));
         lblTitulo.setText("Artículo:");
 
+        txtContenido.setEditable(false);
         txtContenido.setBackground(new java.awt.Color(255, 255, 255));
         txtContenido.setColumns(20);
         txtContenido.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N

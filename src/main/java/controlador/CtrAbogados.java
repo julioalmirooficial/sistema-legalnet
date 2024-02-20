@@ -1,4 +1,3 @@
-
 package controlador;
 
 import atributos.AttrAbogados;
@@ -10,8 +9,8 @@ import modelos.ModAbogados;
 import vistas.VistaAbogados;
 import vistas.VistaMostrarAbogados;
 
-public class CtrAbogados implements ActionListener{
-    
+public class CtrAbogados implements ActionListener {
+
     private AttrAbogados attr;
     private ModAbogados modData;
     private VistaAbogados frm;
@@ -27,8 +26,8 @@ public class CtrAbogados implements ActionListener{
         this.frm.btnModificar.addActionListener(this);
         this.frm.btnLimpiar.addActionListener(this);
     }
-    
-    public CtrAbogados(AttrAbogados attr, ModAbogados modData, VistaMostrarAbogados frm, String read ) {
+
+    public CtrAbogados(AttrAbogados attr, ModAbogados modData, VistaMostrarAbogados frm, String read) {
         this.attr = attr;
         this.modData = modData;
         this.leer = frm;
@@ -44,12 +43,13 @@ public class CtrAbogados implements ActionListener{
     public void listar() {
         DefaultTableModel model;
         model = modData.listar(frm.txtBuscar.getText());
-        frm.tablaUsuarios.setModel(model);
-        frm.tablaUsuarios.getColumnModel().getColumn(0).setMaxWidth(0);
-        frm.tablaUsuarios.getColumnModel().getColumn(0).setMinWidth(0);
-        frm.tablaUsuarios.getColumnModel().getColumn(0).setPreferredWidth(0);
-        frm.tablaUsuarios.setDefaultEditor(Object.class, null);
+        frm.tablaAbogados.setModel(model);
+        frm.tablaAbogados.getColumnModel().getColumn(0).setMaxWidth(0);
+        frm.tablaAbogados.getColumnModel().getColumn(0).setMinWidth(0);
+        frm.tablaAbogados.getColumnModel().getColumn(0).setPreferredWidth(0);
+        frm.tablaAbogados.setDefaultEditor(Object.class, null);
     }
+
     public void listarAbogados() {
         DefaultTableModel model;
         model = modData.listar(leer.txtBuscar.getText());
@@ -72,6 +72,8 @@ public class CtrAbogados implements ActionListener{
                     JOptionPane.showMessageDialog(frm, "Abogado registrado con éxito");
                     limpiar();
                     listar();
+                    frm.btnGuardar.setEnabled(true);
+                    frm.btnModificar.setEnabled(false);
                 } else {
                     JOptionPane.showMessageDialog(frm, "Error al registrar Abogado", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -82,6 +84,8 @@ public class CtrAbogados implements ActionListener{
                     JOptionPane.showMessageDialog(frm, "Abogado modificado con éxito");
                     limpiar();
                     listar();
+                    frm.btnGuardar.setEnabled(true);
+                    frm.btnModificar.setEnabled(false);
                 } else {
                     JOptionPane.showMessageDialog(frm, "Error al modificar Abogado", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -98,9 +102,13 @@ public class CtrAbogados implements ActionListener{
         }
         if (e.getSource() == frm.btnBuscar) {
             listar();
+            frm.btnModificar.setEnabled(false);
+            frm.btnGuardar.setEnabled(true);
         }
         if (e.getSource() == frm.btnLimpiar) {
             limpiar();
+            frm.btnModificar.setEnabled(false);
+            frm.btnGuardar.setEnabled(true);
         }
 
     }

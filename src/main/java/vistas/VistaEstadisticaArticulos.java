@@ -2,7 +2,14 @@ package vistas;
 
 import atributos.AttrEstadisticaArticulos;
 import controlador.CtrEstadisticaArticulos;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
 import modelos.ModEstadisticaArticulos;
+import utilidades.EstilosDeTablas;
 
 public class VistaEstadisticaArticulos extends javax.swing.JPanel {
 
@@ -15,6 +22,11 @@ public class VistaEstadisticaArticulos extends javax.swing.JPanel {
         CtrEstadisticaArticulos ctr = new CtrEstadisticaArticulos(attr, modData, this);
         ctr.listarPorArticulo();
         ctr.listarPorCategorias();
+
+        EstilosDeTablas estilos = new EstilosDeTablas();
+        estilos.pintar(tablaPorArticulos);
+        estilos.pintar(tablaPorCategorias);
+
     }
 
     /**
@@ -35,6 +47,8 @@ public class VistaEstadisticaArticulos extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
 
         tablaPorArticulos.setBackground(new java.awt.Color(255, 255, 255));
         tablaPorArticulos.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -57,9 +71,11 @@ public class VistaEstadisticaArticulos extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tablaPorArticulos);
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(66, 66, 66));
-        jLabel2.setText("POR ÁRTICULOS");
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(33, 122, 206));
+        jLabel2.setText("Reporte por articulos");
+
+        jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
 
         tablaPorCategorias.setBackground(new java.awt.Color(255, 255, 255));
         tablaPorCategorias.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -82,9 +98,10 @@ public class VistaEstadisticaArticulos extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tablaPorCategorias);
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(66, 66, 66));
-        jLabel3.setText("POR CATEGORÍAS");
+        jLabel3.setBackground(new java.awt.Color(33, 122, 206));
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(33, 122, 206));
+        jLabel3.setText("Reporte por categoría");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -93,12 +110,12 @@ public class VistaEstadisticaArticulos extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel2)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -110,19 +127,15 @@ public class VistaEstadisticaArticulos extends javax.swing.JPanel {
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
-                        .addContainerGap())))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

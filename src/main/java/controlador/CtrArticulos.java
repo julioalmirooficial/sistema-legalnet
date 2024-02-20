@@ -43,14 +43,14 @@ public class CtrArticulos implements ActionListener {
         DefaultTableModel model;
         model = modData.listar(frm.txtBuscar.getText());
         frm.cbxCategorias.enable();
-        frm.tablaUsuarios.setModel(model);
-        frm.tablaUsuarios.getColumnModel().getColumn(0).setMaxWidth(0);
-        frm.tablaUsuarios.getColumnModel().getColumn(0).setMinWidth(0);
-        frm.tablaUsuarios.getColumnModel().getColumn(0).setPreferredWidth(0);
-        frm.tablaUsuarios.getColumnModel().getColumn(1).setMaxWidth(0);
-        frm.tablaUsuarios.getColumnModel().getColumn(1).setMinWidth(0);
-        frm.tablaUsuarios.getColumnModel().getColumn(1).setPreferredWidth(0);
-        frm.tablaUsuarios.setDefaultEditor(Object.class, null);
+        frm.tablaArticulos.setModel(model);
+        frm.tablaArticulos.getColumnModel().getColumn(0).setMaxWidth(0);
+        frm.tablaArticulos.getColumnModel().getColumn(0).setMinWidth(0);
+        frm.tablaArticulos.getColumnModel().getColumn(0).setPreferredWidth(0);
+        frm.tablaArticulos.getColumnModel().getColumn(1).setMaxWidth(0);
+        frm.tablaArticulos.getColumnModel().getColumn(1).setMinWidth(0);
+        frm.tablaArticulos.getColumnModel().getColumn(1).setPreferredWidth(0);
+        frm.tablaArticulos.setDefaultEditor(Object.class, null);
     }
 
     public void listarArticulos(int id, String buscar) {
@@ -95,6 +95,8 @@ public class CtrArticulos implements ActionListener {
                     limpiar();
                     listar();
                     frm.cbxCategorias.enable();
+                    frm.btnGuardar.setEnabled(true);
+                    frm.btnModificar.setEnabled(false);
                 } else {
                     JOptionPane.showMessageDialog(frm, "Error al modificar Artículo", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -106,15 +108,21 @@ public class CtrArticulos implements ActionListener {
                 JOptionPane.showMessageDialog(frm, "Artículo eliminado con éxito");
                 listar();
                 frm.cbxCategorias.enable();
+                frm.btnGuardar.setEnabled(true);
+                frm.btnModificar.setEnabled(false);
             } else {
                 JOptionPane.showMessageDialog(frm, "Error al eliminar Artículo", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
         if (e.getSource() == frm.btnBuscar) {
             listar();
+            frm.btnModificar.setEnabled(false);
+            frm.btnGuardar.setEnabled(true);
         }
         if (e.getSource() == frm.btnLimpiar) {
             limpiar();
+            frm.btnModificar.setEnabled(false);
+            frm.btnGuardar.setEnabled(true);
         }
 
     }

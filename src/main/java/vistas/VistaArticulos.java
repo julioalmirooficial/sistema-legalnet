@@ -4,6 +4,7 @@ import atributos.AttrArticulos;
 import controlador.CtrArticulos;
 import modelos.CbxCategorias;
 import modelos.ModArticulos;
+import utilidades.EstilosDeTablas;
 
 public class VistaArticulos extends javax.swing.JPanel {
 
@@ -18,6 +19,10 @@ public class VistaArticulos extends javax.swing.JPanel {
         ctr.listar();
         CbxCategorias cbx = new CbxCategorias();
         cbx.cbxCategoria(cbxCategorias);
+
+        EstilosDeTablas estilos = new EstilosDeTablas();
+        estilos.pintar(tablaArticulos);
+        btnModificar.setEnabled(false);
     }
 
     /**
@@ -32,7 +37,7 @@ public class VistaArticulos extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaUsuarios = new javax.swing.JTable();
+        tablaArticulos = new javax.swing.JTable();
         txtBuscar = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btnEliminar = new javax.swing.JButton();
@@ -53,9 +58,9 @@ public class VistaArticulos extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        tablaUsuarios.setBackground(new java.awt.Color(255, 255, 255));
-        tablaUsuarios.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        tablaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
+        tablaArticulos.setBackground(new java.awt.Color(255, 255, 255));
+        tablaArticulos.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        tablaArticulos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -66,13 +71,13 @@ public class VistaArticulos extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tablaUsuarios.setRowHeight(30);
-        tablaUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablaArticulos.setRowHeight(30);
+        tablaArticulos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaUsuariosMouseClicked(evt);
+                tablaArticulosMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tablaUsuarios);
+        jScrollPane1.setViewportView(tablaArticulos);
 
         txtBuscar.setBackground(new java.awt.Color(255, 255, 255));
         txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -129,7 +134,7 @@ public class VistaArticulos extends javax.swing.JPanel {
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 73, 130), 2, true), "DATOS DEL USUARIO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(4, 73, 130))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 73, 130), 2, true), "DATOS DEL ARTÍCULO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(4, 73, 130))); // NOI18N
 
         btnModificar.setBackground(new java.awt.Color(222, 137, 3));
         btnModificar.setText("Modificar");
@@ -248,15 +253,17 @@ public class VistaArticulos extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tablaUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaUsuariosMouseClicked
-        int fila = tablaUsuarios.getSelectedRow();
+    private void tablaArticulosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaArticulosMouseClicked
+        int fila = tablaArticulos.getSelectedRow();
         if (fila >= 0) {
-            id = Integer.parseInt(tablaUsuarios.getValueAt(fila, 0).toString());
-            txtTitulo.setText(tablaUsuarios.getValueAt(fila, 3).toString());
-            txtRespuesta.setText(tablaUsuarios.getValueAt(fila, 4).toString());
+            id = Integer.parseInt(tablaArticulos.getValueAt(fila, 0).toString());
+            txtTitulo.setText(tablaArticulos.getValueAt(fila, 3).toString());
+            txtRespuesta.setText(tablaArticulos.getValueAt(fila, 4).toString());
             cbxCategorias.disable();
+            btnGuardar.setEnabled(false);
+            btnModificar.setEnabled(true);
         }
-    }//GEN-LAST:event_tablaUsuariosMouseClicked
+    }//GEN-LAST:event_tablaArticulosMouseClicked
 
     private void txtBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyTyped
 
@@ -291,7 +298,7 @@ public class VistaArticulos extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    public static javax.swing.JTable tablaUsuarios;
+    public static javax.swing.JTable tablaArticulos;
     public static javax.swing.JTextField txtBuscar;
     public static javax.swing.JTextArea txtRespuesta;
     public static javax.swing.JTextField txtTitulo;

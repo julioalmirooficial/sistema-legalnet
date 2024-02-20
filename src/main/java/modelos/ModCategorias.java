@@ -13,7 +13,7 @@ public class ModCategorias extends AttrCategorias{
 
     private String query = "";
 
-    public DefaultTableModel listarUsuarios(String buscar) {
+    public DefaultTableModel listar(String buscar) {
         Conexion conexion = new Conexion();
         Connection cn = conexion.conectar();
 

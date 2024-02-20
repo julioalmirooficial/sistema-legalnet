@@ -3,6 +3,7 @@ package vistas;
 import modelos.ModCategorias;
 import atributos.AttrCategorias;
 import controlador.CtrCategorias;
+import utilidades.EstilosDeTablas;
 
 public class VistaCategorias extends javax.swing.JPanel {
 
@@ -14,6 +15,10 @@ public class VistaCategorias extends javax.swing.JPanel {
         ModCategorias modData = new ModCategorias();
         CtrCategorias ctr = new CtrCategorias(attr, modData, this);
         ctr.listar();
+
+        EstilosDeTablas estilos = new EstilosDeTablas();
+        estilos.pintar(tablaCategorias);
+        btnModificar.setEnabled(false);
     }
 
     /**
@@ -28,7 +33,7 @@ public class VistaCategorias extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaUsuarios = new javax.swing.JTable();
+        tablaCategorias = new javax.swing.JTable();
         txtBuscar = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btnEliminar = new javax.swing.JButton();
@@ -44,9 +49,9 @@ public class VistaCategorias extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        tablaUsuarios.setBackground(new java.awt.Color(255, 255, 255));
-        tablaUsuarios.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        tablaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
+        tablaCategorias.setBackground(new java.awt.Color(255, 255, 255));
+        tablaCategorias.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        tablaCategorias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -57,13 +62,13 @@ public class VistaCategorias extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tablaUsuarios.setRowHeight(30);
-        tablaUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablaCategorias.setRowHeight(30);
+        tablaCategorias.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaUsuariosMouseClicked(evt);
+                tablaCategoriasMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tablaUsuarios);
+        jScrollPane1.setViewportView(tablaCategorias);
 
         txtBuscar.setBackground(new java.awt.Color(255, 255, 255));
         txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -107,7 +112,6 @@ public class VistaCategorias extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
@@ -121,7 +125,7 @@ public class VistaCategorias extends javax.swing.JPanel {
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 73, 130), 2, true), "DATOS DEL USUARIO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(4, 73, 130))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 73, 130), 2, true), "DATOS DE LA CATEGORÍA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(4, 73, 130))); // NOI18N
 
         btnModificar.setBackground(new java.awt.Color(222, 137, 3));
         btnModificar.setText("Modificar");
@@ -207,13 +211,15 @@ public class VistaCategorias extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tablaUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaUsuariosMouseClicked
-        int fila = tablaUsuarios.getSelectedRow();
+    private void tablaCategoriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaCategoriasMouseClicked
+        int fila = tablaCategorias.getSelectedRow();
         if (fila >= 0) {
-            id = Integer.parseInt(tablaUsuarios.getValueAt(fila, 0).toString());
-            txtDescripcion.setText(tablaUsuarios.getValueAt(fila, 1).toString());
+            id = Integer.parseInt(tablaCategorias.getValueAt(fila, 0).toString());
+            txtDescripcion.setText(tablaCategorias.getValueAt(fila, 1).toString());
+            btnGuardar.setEnabled(false);
+            btnModificar.setEnabled(true);
         }
-    }//GEN-LAST:event_tablaUsuariosMouseClicked
+    }//GEN-LAST:event_tablaCategoriasMouseClicked
 
     private void txtBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyTyped
 
@@ -240,7 +246,7 @@ public class VistaCategorias extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    public static javax.swing.JTable tablaUsuarios;
+    public static javax.swing.JTable tablaCategorias;
     public static javax.swing.JTextField txtBuscar;
     public static javax.swing.JTextField txtDescripcion;
     // End of variables declaration//GEN-END:variables

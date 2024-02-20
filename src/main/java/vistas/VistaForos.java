@@ -6,7 +6,6 @@ import controlador.CtrForos;
 import javax.swing.JOptionPane;
 import modelos.ModForos;
 import modelos.ModUsuarios;
-import principal.Dashboard;
 
 public class VistaForos extends javax.swing.JPanel {
 
@@ -20,6 +19,7 @@ public class VistaForos extends javax.swing.JPanel {
         CtrForos ctr = new CtrForos(attr, modData, this);
         ctr.listar();
         btnEliminar.setVisible(false);
+        btnReportar.setVisible(false);
     }
 
     /**
@@ -45,7 +45,7 @@ public class VistaForos extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 73, 130), 2, true), "DATOS DEL USUARIO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(4, 73, 130))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 73, 130), 2, true), "FOROS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(4, 73, 130))); // NOI18N
 
         btnGuardar.setBackground(new java.awt.Color(18, 170, 98));
         btnGuardar.setText("Registrar");

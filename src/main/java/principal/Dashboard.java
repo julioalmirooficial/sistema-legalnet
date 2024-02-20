@@ -1,7 +1,7 @@
-
 package principal;
 
 import utilidades.CambiarPanel;
+import vistas.Inicio;
 import vistas.VistaEstadisticas;
 import vistas.VistaAbogados;
 import vistas.VistaArticulos;
@@ -13,10 +13,13 @@ import vistas.VistaUsuarios;
 
 public class Dashboard extends javax.swing.JFrame {
 
-   public static int idUsuario = 0;
+    public static int idUsuario = 0;
+
     public Dashboard() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
+        this.setTitle("SISTEMA LEGALNET V 0.01");
+        new CambiarPanel(window, new Inicio());
     }
 
     @SuppressWarnings("unchecked")
@@ -112,10 +115,15 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        mnuCerrarSesion.setBackground(new java.awt.Color(255, 192, 0));
+        mnuCerrarSesion.setBackground(new java.awt.Color(142, 112, 19));
         mnuCerrarSesion.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         mnuCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
         mnuCerrarSesion.setText("CERRAR SESION");
+        mnuCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuCerrarSesionActionPerformed(evt);
+            }
+        });
 
         mnuVerArticulos.setBackground(new java.awt.Color(1, 77, 140));
         mnuVerArticulos.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -219,12 +227,11 @@ public class Dashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mnuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuPrincipalActionPerformed
-       
-//        new ChangePanel(PrincipalHomes, new Shopping());
+        new CambiarPanel(window, new Inicio());
     }//GEN-LAST:event_mnuPrincipalActionPerformed
 
     private void mnuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuUsuariosActionPerformed
-       new CambiarPanel(window, new VistaUsuarios());
+        new CambiarPanel(window, new VistaUsuarios());
     }//GEN-LAST:event_mnuUsuariosActionPerformed
 
     private void mnuCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCategoriasActionPerformed
@@ -232,7 +239,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuCategoriasActionPerformed
 
     private void mnuArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuArticulosActionPerformed
-        new CambiarPanel(window, new VistaArticulos());        
+        new CambiarPanel(window, new VistaArticulos());
     }//GEN-LAST:event_mnuArticulosActionPerformed
 
     private void mnuForoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuForoActionPerformed
@@ -244,7 +251,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuVerArticulosActionPerformed
 
     private void mnuAbogadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAbogadosActionPerformed
-       new CambiarPanel(window, new VistaAbogados());
+        new CambiarPanel(window, new VistaAbogados());
     }//GEN-LAST:event_mnuAbogadosActionPerformed
 
     private void mnuMostrarAbogadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMostrarAbogadosActionPerformed
@@ -254,6 +261,12 @@ public class Dashboard extends javax.swing.JFrame {
     private void mnuEstadisticaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuEstadisticaActionPerformed
         new CambiarPanel(window, new VistaEstadisticas());
     }//GEN-LAST:event_mnuEstadisticaActionPerformed
+
+    private void mnuCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCerrarSesionActionPerformed
+        this.dispose();
+        Login login = new Login();
+        login.setVisible(true);
+    }//GEN-LAST:event_mnuCerrarSesionActionPerformed
 
     /**
      * @param args the command line arguments

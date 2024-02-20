@@ -5,6 +5,7 @@ import atributos.AttrCategorias;
 import controlador.CtrCategorias;
 import static principal.Dashboard.window;
 import utilidades.CambiarPanel;
+import utilidades.EstilosDeTablas;
 
 public class VistaMostrarCategorias extends javax.swing.JPanel {
 
@@ -16,6 +17,7 @@ public class VistaMostrarCategorias extends javax.swing.JPanel {
         ModCategorias modData = new ModCategorias();
         CtrCategorias ctr = new CtrCategorias(attr, modData, this,"");
         ctr.listarCategorias();
+        
     }
 
     /**

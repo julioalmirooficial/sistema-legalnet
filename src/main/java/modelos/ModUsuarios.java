@@ -52,6 +52,39 @@ public class ModUsuarios {
             }
         }
     }
+    
+    public DefaultTableModel listarUsuariosReportados() {
+        Conexion conexion = new Conexion();
+        Connection cn = conexion.conectar();
+
+        DefaultTableModel model;
+        String[] headers = {"USUARIO", "MOTIVO"};
+        String[] registros = new String[headers.length];
+        model = new DefaultTableModel(null, headers);
+
+        query = "SELECT * FROM usuarios  WHERE estado_reportado = 1 ORDER BY id DESC";
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                registros[0] = rs.getString("nombres");
+                registros[1] = rs.getString("motivo_reportado");
+                model.addRow(registros);
+            }
+            return model;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            return null;
+        } finally {
+            try {
+                cn.close();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, e);
+                return null;
+            }
+        }
+    }
 
     public boolean insertar(AttrPersona dts) {
 
