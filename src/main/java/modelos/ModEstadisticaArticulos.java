@@ -1,6 +1,6 @@
 package modelos;
 
-import atributos.AttrForos;
+import atributos.AttrEstadisticaArticulos;
 import db.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,32 +10,43 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class ModForos {
+public class ModEstadisticaArticulos {
 
     private String query = "";
 
-    public DefaultTableModel listar(String buscar) {
+    public DefaultTableModel listar(String buscar, String tipo) {
         Conexion conexion = new Conexion();
         Connection cn = conexion.conectar();
 
         DefaultTableModel model;
-        String[] headers = {"ID","IDUSUARIO", "USUARIO","DESCRIPCIÓN",};
+        String[] headers = {"DESCRIPCION", "TOTAL",};
         String[] registros = new String[headers.length];
         model = new DefaultTableModel(null, headers);
+        if (tipo.equals("CATEGORIA")) {
+            query = "SELECT c.descripcion AS descripcion, COUNT(*) AS total "
+                    + "FROM estadistica_articulos e "
+                    + "INNER JOIN articulos a ON "
+                    + "a.id = e.idarticulo "
+                    + "INNER JOIN categorias c ON "
+                    + "c.id = a.idcategoria "
+                    + "GROUP BY c.id";
+        } else {
+            query = "SELECT a.titulo  AS descripcion, COUNT(*) AS total "
+                    + "FROM estadistica_articulos e "
+                    + "INNER JOIN articulos a ON "
+                    + "a.id = e.idarticulo "
+                    + "INNER JOIN categorias c ON "
+                    + "c.id = a.idcategoria "
+                    + "GROUP BY a.id";
+        }
 
-        query = "SELECT f.*,u.nombres FROM foros f  "
-                + "INNER JOIN usuarios u ON "
-                + "u.id = f.idusuario "
-                + "ORDER BY f.id DESC LIMIT 20";
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                registros[0] = rs.getString("id");
-                registros[1] = rs.getString("f.idusuario");
-                registros[2] = rs.getString("u.nombres");
-                registros[3] = rs.getString("f.descripcion");
+                registros[0] = rs.getString("descripcion");
+                registros[1] = rs.getString("total");
                 model.addRow(registros);
             }
             return model;
@@ -52,17 +63,17 @@ public class ModForos {
         }
     }
 
-    public boolean insertar(AttrForos dts) {
+    public boolean insertar(AttrEstadisticaArticulos dts) {
 
         Conexion conexion = new Conexion();
         Connection cn = conexion.conectar();
 
-        query = "INSERT INTO foros (idusuario,descripcion) "
+        query = "INSERT INTO estadistica_articulos (idarticulo,fecha) "
                 + "VALUES(?,?)";
         try {
             PreparedStatement pst = cn.prepareStatement(query);
-            pst.setInt(1, dts.getIdUsuario());
-            pst.setString(2, dts.getDescripcion());
+            pst.setInt(1, dts.getIdArticulo());
+            pst.setString(2, dts.getFecha());
 
             int n = pst.executeUpdate();
             return n != 0;
@@ -78,24 +89,4 @@ public class ModForos {
         }
     }
 
-    public boolean eliminar(AttrForos dts) {
-        Conexion conexion = new Conexion();
-        Connection cn = conexion.conectar();
-        query = "DELETE FROM foros WHERE id=?";
-        try {
-            PreparedStatement pst = cn.prepareStatement(query);
-            pst.setInt(1, dts.getId());
-            int n = pst.executeUpdate();
-            return n != 0;
-        } catch (SQLException e) {
-            return false;
-        } finally {
-            try {
-                cn.close();
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, e);
-                return false;
-            }
-        }
-    }
 }

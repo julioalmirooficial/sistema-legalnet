@@ -1,12 +1,17 @@
 package vistas;
 
 import atributos.AttrForos;
+import atributos.AttrPersona;
 import controlador.CtrForos;
+import javax.swing.JOptionPane;
 import modelos.ModForos;
+import modelos.ModUsuarios;
+import principal.Dashboard;
 
 public class VistaForos extends javax.swing.JPanel {
 
     public static int id = 0;
+    public static int idUsuario = 0;
 
     public VistaForos() {
         initComponents();
@@ -35,6 +40,7 @@ public class VistaForos extends javax.swing.JPanel {
         btnEliminar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtDescripcion = new javax.swing.JTextArea();
+        btnReportar = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -76,6 +82,14 @@ public class VistaForos extends javax.swing.JPanel {
         txtDescripcion.setRows(5);
         jScrollPane2.setViewportView(txtDescripcion);
 
+        btnReportar.setBackground(new java.awt.Color(241, 132, 0));
+        btnReportar.setText("Reportar usuario");
+        btnReportar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -87,9 +101,11 @@ public class VistaForos extends javax.swing.JPanel {
                     .addComponent(jScrollPane2)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(19, 19, 19)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnReportar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -105,7 +121,8 @@ public class VistaForos extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnReportar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
                 .addContainerGap())
@@ -140,7 +157,9 @@ public class VistaForos extends javax.swing.JPanel {
         int fila = tablaUsuarios.getSelectedRow();
         if (fila >= 0) {
             id = Integer.parseInt(tablaUsuarios.getValueAt(fila, 0).toString());
+            idUsuario = Integer.parseInt(tablaUsuarios.getValueAt(fila, 1).toString());
             btnEliminar.setVisible(true);
+            btnReportar.setVisible(true);
         }
     }//GEN-LAST:event_tablaUsuariosMouseClicked
 
@@ -148,10 +167,36 @@ public class VistaForos extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+    private void btnReportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportarActionPerformed
+
+        if (idUsuario > 0) {
+            AttrPersona attr = new AttrPersona();
+            ModUsuarios modData = new ModUsuarios();
+            attr.setId(idUsuario);            
+            attr.setEstadoReportado(true);
+            String motivo = JOptionPane.showInputDialog("Ingresa el motivo por el cual está reportado al usuario");
+            if (motivo == null || motivo.trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Error al reportar usuario, ingresa el motivo por favor", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            attr.setMotivoReportado(motivo);
+            if (modData.reportar(attr)) {
+                JOptionPane.showMessageDialog(this, "Usuario reportado con éxito");
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al reportar usuario", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            btnEliminar.setVisible(false);
+            btnReportar.setVisible(false);
+            idUsuario = 0;
+        }
+    }//GEN-LAST:event_btnReportarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnEliminar;
     public static javax.swing.JButton btnGuardar;
+    public static javax.swing.JButton btnReportar;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;

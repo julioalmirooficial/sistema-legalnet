@@ -1,22 +1,20 @@
-
 package vistas;
 
-import controlador.CtrUsuarios;
-import atributos.AttrPersona;
-import modelos.ModUsuarios;
+import atributos.AttrAbogados;
+import controlador.CtrAbogados;
+import modelos.ModAbogados;
 
-public class VistaUsuarios extends javax.swing.JPanel {
+public class VistaAbogados extends javax.swing.JPanel {
 
     public static int id = 0;
 
-    public VistaUsuarios() {
+    public VistaAbogados() {
         initComponents();
-        AttrPersona modPersona = new AttrPersona();
-        ModUsuarios modUsuarios = new ModUsuarios();
-        CtrUsuarios ctrUsuarios = new CtrUsuarios(modPersona, modUsuarios, this);
-        ctrUsuarios.listar();
+        AttrAbogados attr = new AttrAbogados();
+        ModAbogados modData = new ModAbogados();
+        CtrAbogados ctr = new CtrAbogados(attr, modData, this);
+        ctr.listar();
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,16 +37,12 @@ public class VistaUsuarios extends javax.swing.JPanel {
         btnModificar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        cbxTipo = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         txtNombres = new javax.swing.JTextField();
-        txtUsuario = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JPasswordField();
+        txtDireccion = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        cbxEstado = new javax.swing.JComboBox<>();
+        txtCelular = new javax.swing.JTextField();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -104,11 +98,11 @@ public class VistaUsuarios extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 656, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -130,7 +124,7 @@ public class VistaUsuarios extends javax.swing.JPanel {
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 73, 130), 2, true), "DATOS DEL USUARIO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(4, 73, 130))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 73, 130), 2, true), "DATOS DEL ABOGADO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(4, 73, 130))); // NOI18N
 
         btnModificar.setBackground(new java.awt.Color(222, 137, 3));
         btnModificar.setText("Modificar");
@@ -145,35 +139,23 @@ public class VistaUsuarios extends javax.swing.JPanel {
 
         btnLimpiar.setText("Limpiar");
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(66, 66, 66));
-        jLabel2.setText("Tipo de usuario");
-
-        cbxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMINISTRADOR", "USUARIO", "ABOGADOS" }));
-
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(66, 66, 66));
         jLabel3.setText("Nombres y apellidos");
 
         txtNombres.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
-
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(66, 66, 66));
-        jLabel4.setText("Nombre de usuario");
+        jLabel4.setText("Direción");
 
-        txtPassword.setBackground(new java.awt.Color(255, 255, 255));
+        txtDireccion.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(66, 66, 66));
-        jLabel5.setText("Nombre de usuario");
+        jLabel5.setText("Celular");
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(66, 66, 66));
-        jLabel6.setText("Estado");
-
-        cbxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ACTIVO", "INACTIVO" }));
+        txtCelular.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -182,51 +164,39 @@ public class VistaUsuarios extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtNombres, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cbxTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cbxEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel6))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(0, 8, Short.MAX_VALUE)
                         .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDireccion, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtCelular, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(29, 29, 29)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -269,20 +239,18 @@ public class VistaUsuarios extends javax.swing.JPanel {
         int fila = tablaUsuarios.getSelectedRow();
         if (fila >= 0) {
             id = Integer.parseInt(tablaUsuarios.getValueAt(fila, 0).toString());
-            txtNombres.setText(tablaUsuarios.getValueAt(fila, 2).toString());
-            txtUsuario.setText(tablaUsuarios.getValueAt(fila, 3).toString());
-            txtPassword.setText(tablaUsuarios.getValueAt(fila, 4).toString());
-            cbxEstado.setSelectedItem(tablaUsuarios.getValueAt(fila, 5).toString());
-            cbxTipo.setSelectedItem(tablaUsuarios.getValueAt(fila, 1).toString());
+            txtNombres.setText(tablaUsuarios.getValueAt(fila, 1).toString());
+            txtDireccion.setText(tablaUsuarios.getValueAt(fila, 2).toString());
+            txtCelular.setText(tablaUsuarios.getValueAt(fila, 3).toString());
         }
     }//GEN-LAST:event_tablaUsuariosMouseClicked
 
     private void txtBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyTyped
-        
-        AttrPersona modPersona = new AttrPersona();
-        ModUsuarios modUsuarios = new ModUsuarios();
-        CtrUsuarios ctrUsuarios = new CtrUsuarios(modPersona, modUsuarios, this);
-        ctrUsuarios.listar();
+
+        AttrAbogados attr = new AttrAbogados();
+        ModAbogados modData = new ModAbogados();
+        CtrAbogados ctr = new CtrAbogados(attr, modData, this);
+        ctr.listar();
     }//GEN-LAST:event_txtBuscarKeyTyped
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -296,22 +264,18 @@ public class VistaUsuarios extends javax.swing.JPanel {
     public static javax.swing.JButton btnGuardar;
     public static javax.swing.JButton btnLimpiar;
     public static javax.swing.JButton btnModificar;
-    public static javax.swing.JComboBox<String> cbxEstado;
-    public static javax.swing.JComboBox<String> cbxTipo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JTable tablaUsuarios;
     public static javax.swing.JTextField txtBuscar;
+    public static javax.swing.JTextField txtCelular;
+    public static javax.swing.JTextField txtDireccion;
     public static javax.swing.JTextField txtNombres;
-    public static javax.swing.JPasswordField txtPassword;
-    public static javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

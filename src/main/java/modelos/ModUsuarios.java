@@ -1,5 +1,6 @@
 package modelos;
 
+import atributos.AttrPersona;
 import db.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -35,7 +36,7 @@ public class ModUsuarios {
                 registros[2] = rs.getString("nombres");
                 registros[3] = rs.getString("usuario");
                 registros[4] = rs.getString("password");
-                registros[5] = rs.getString("estado").equals("1")?"ACTIVO":"INACTIVO";
+                registros[5] = rs.getString("estado").equals("1") ? "ACTIVO" : "INACTIVO";
                 model.addRow(registros);
             }
             return model;
@@ -52,7 +53,7 @@ public class ModUsuarios {
         }
     }
 
-    public boolean insertar(ModPersona dts) {
+    public boolean insertar(AttrPersona dts) {
 
         Conexion conexion = new Conexion();
         Connection cn = conexion.conectar();
@@ -81,7 +82,33 @@ public class ModUsuarios {
         }
     }
 
-    public boolean modificar(ModPersona dts) {
+    public boolean reportar(AttrPersona dts) {
+
+        Conexion conexion = new Conexion();
+        Connection cn = conexion.conectar();
+
+        query = "UPDATE usuarios SET estado_reportado=?, motivo_reportado=?  "
+                + "WHERE id=?";
+        try {
+            PreparedStatement pst = cn.prepareStatement(query);
+            pst.setBoolean(1, dts.getEstadoReportado());
+            pst.setString(2, dts.getMotivoReportado());
+            pst.setInt(3, dts.getId());
+            int n = pst.executeUpdate();
+            return n != 0;
+        } catch (SQLException e) {
+            return false;
+        } finally {
+            try {
+                cn.close();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, e);
+                return false;
+            }
+        }
+    }
+
+    public boolean modificar(AttrPersona dts) {
 
         Conexion conexion = new Conexion();
         Connection cn = conexion.conectar();
@@ -110,7 +137,7 @@ public class ModUsuarios {
         }
     }
 
-    public boolean eliminar(ModPersona dts) {
+    public boolean eliminar(AttrPersona dts) {
         Conexion conexion = new Conexion();
         Connection cn = conexion.conectar();
         query = "DELETE FROM usuarios WHERE id=?";

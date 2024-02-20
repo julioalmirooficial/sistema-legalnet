@@ -29,14 +29,17 @@ public class CtrForos implements ActionListener {
 
     public void listar() {
         DefaultTableModel model;
-        model = modData.listarUsuarios("");
+        model = modData.listar("");
         frm.tablaUsuarios.setModel(model);
         frm.tablaUsuarios.getColumnModel().getColumn(0).setMaxWidth(0);
         frm.tablaUsuarios.getColumnModel().getColumn(0).setMinWidth(0);
         frm.tablaUsuarios.getColumnModel().getColumn(0).setPreferredWidth(0);
-        frm.tablaUsuarios.getColumnModel().getColumn(1).setMaxWidth(200);
-        frm.tablaUsuarios.getColumnModel().getColumn(1).setMinWidth(200);
-        frm.tablaUsuarios.getColumnModel().getColumn(1).setPreferredWidth(200);
+        frm.tablaUsuarios.getColumnModel().getColumn(1).setMaxWidth(0);
+        frm.tablaUsuarios.getColumnModel().getColumn(1).setMinWidth(0);
+        frm.tablaUsuarios.getColumnModel().getColumn(1).setPreferredWidth(0);
+        frm.tablaUsuarios.getColumnModel().getColumn(2).setMaxWidth(200);
+        frm.tablaUsuarios.getColumnModel().getColumn(2).setMinWidth(200);
+        frm.tablaUsuarios.getColumnModel().getColumn(2).setPreferredWidth(200);
         frm.tablaUsuarios.setDefaultEditor(Object.class, null);
     }
 

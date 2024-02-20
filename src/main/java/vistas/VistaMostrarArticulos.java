@@ -1,8 +1,12 @@
 package vistas;
 
 import atributos.AttrArticulos;
+import atributos.AttrEstadisticaArticulos;
 import controlador.CtrArticulos;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import modelos.ModArticulos;
+import modelos.ModEstadisticaArticulos;
 import static principal.Dashboard.window;
 import utilidades.CambiarPanel;
 
@@ -16,7 +20,7 @@ public class VistaMostrarArticulos extends javax.swing.JPanel {
         AttrArticulos attr = new AttrArticulos();
         ModArticulos modData = new ModArticulos();
         CtrArticulos ctr = new CtrArticulos(attr, modData, this, "");
-        ctr.listarArticulos(VistaMostrarCategorias.id,"");
+        ctr.listarArticulos(VistaMostrarCategorias.id, "");
     }
 
     /**
@@ -134,10 +138,21 @@ public class VistaMostrarArticulos extends javax.swing.JPanel {
         int fila = tablaArticulos.getSelectedRow();
         if (fila >= 0) {
             id = Integer.parseInt(tablaArticulos.getValueAt(fila, 0).toString());
-            AttrArticulos attr = new AttrArticulos();
+
+            LocalDateTime fechaActual = LocalDateTime.now();
+
+            // Formatear la fecha en el formato "yyyy-MM-dd"
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+            ModEstadisticaArticulos modData = new ModEstadisticaArticulos();
+            AttrEstadisticaArticulos attr = new AttrEstadisticaArticulos();
+            attr.setIdArticulo(id);
+            attr.setFecha(fechaActual.format(formatter));
+            modData.insertar(attr);
+
             VistaMostrarContenidoArticulo contenido = new VistaMostrarContenidoArticulo();
             contenido.txtContenido.setText(tablaArticulos.getValueAt(fila, 4).toString());
-            contenido.lblTitulo.setText("Artículo: "+tablaArticulos.getValueAt(fila, 3).toString());
+            contenido.lblTitulo.setText("Artículo: " + tablaArticulos.getValueAt(fila, 3).toString());
             new CambiarPanel(window, contenido);
         }
     }//GEN-LAST:event_tablaArticulosMouseClicked
@@ -146,7 +161,7 @@ public class VistaMostrarArticulos extends javax.swing.JPanel {
         AttrArticulos attr = new AttrArticulos();
         ModArticulos modData = new ModArticulos();
         CtrArticulos ctr = new CtrArticulos(attr, modData, this, "");
-        ctr.listarArticulos(idArticulo,txtBuscar.getText());
+        ctr.listarArticulos(idArticulo, txtBuscar.getText());
     }//GEN-LAST:event_txtBuscarKeyTyped
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

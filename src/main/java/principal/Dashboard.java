@@ -2,9 +2,12 @@
 package principal;
 
 import utilidades.CambiarPanel;
+import vistas.VistaEstadisticas;
+import vistas.VistaAbogados;
 import vistas.VistaArticulos;
 import vistas.VistaCategorias;
 import vistas.VistaForos;
+import vistas.VistaMostrarAbogados;
 import vistas.VistaMostrarCategorias;
 import vistas.VistaUsuarios;
 
@@ -33,6 +36,7 @@ public class Dashboard extends javax.swing.JFrame {
         mnuCerrarSesion = new javax.swing.JButton();
         mnuVerArticulos = new javax.swing.JButton();
         mnuCategorias = new javax.swing.JButton();
+        mnuMostrarAbogados = new javax.swing.JButton();
         window = new javax.swing.JPanel();
 
         jLabel1.setText("jLabel1");
@@ -72,6 +76,11 @@ public class Dashboard extends javax.swing.JFrame {
         mnuEstadistica.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         mnuEstadistica.setForeground(new java.awt.Color(255, 255, 255));
         mnuEstadistica.setText("ESTADISTICA");
+        mnuEstadistica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuEstadisticaActionPerformed(evt);
+            }
+        });
 
         mnuArticulos.setBackground(new java.awt.Color(1, 77, 140));
         mnuArticulos.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -86,12 +95,17 @@ public class Dashboard extends javax.swing.JFrame {
         mnuAbogados.setBackground(new java.awt.Color(1, 77, 140));
         mnuAbogados.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         mnuAbogados.setForeground(new java.awt.Color(255, 255, 255));
-        mnuAbogados.setText("ABOGADOS");
+        mnuAbogados.setText("ADMINISTRAR ABOGADOS");
+        mnuAbogados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuAbogadosActionPerformed(evt);
+            }
+        });
 
         mnuUsuarios.setBackground(new java.awt.Color(1, 77, 140));
         mnuUsuarios.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         mnuUsuarios.setForeground(new java.awt.Color(255, 255, 255));
-        mnuUsuarios.setText("USUARIOS");
+        mnuUsuarios.setText("AMINISTRAR USUARIOS");
         mnuUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuUsuariosActionPerformed(evt);
@@ -116,10 +130,20 @@ public class Dashboard extends javax.swing.JFrame {
         mnuCategorias.setBackground(new java.awt.Color(1, 77, 140));
         mnuCategorias.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         mnuCategorias.setForeground(new java.awt.Color(255, 255, 255));
-        mnuCategorias.setText("CATEGORIAS");
+        mnuCategorias.setText("ADMINISTRAR CATEGORIAS");
         mnuCategorias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuCategoriasActionPerformed(evt);
+            }
+        });
+
+        mnuMostrarAbogados.setBackground(new java.awt.Color(1, 77, 140));
+        mnuMostrarAbogados.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        mnuMostrarAbogados.setForeground(new java.awt.Color(255, 255, 255));
+        mnuMostrarAbogados.setText("ABOGADOS");
+        mnuMostrarAbogados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuMostrarAbogadosActionPerformed(evt);
             }
         });
 
@@ -128,10 +152,6 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(mnuPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(mnuForo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(mnuArticulos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(mnuEstadistica, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(mnuAbogados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(mnuCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -139,9 +159,14 @@ public class Dashboard extends javax.swing.JFrame {
                     .addComponent(lblUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
                     .addComponent(lblRol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addComponent(mnuVerArticulos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mnuArticulos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mnuAbogados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(mnuCategorias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(mnuUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mnuEstadistica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mnuVerArticulos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mnuForo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mnuMostrarAbogados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,20 +178,22 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(86, 86, 86)
                 .addComponent(mnuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mnuForo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mnuArticulos, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mnuEstadistica, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mnuAbogados, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mnuVerArticulos, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mnuCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mnuUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(mnuEstadistica, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(mnuVerArticulos, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(mnuForo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(mnuMostrarAbogados, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
                 .addComponent(mnuCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -216,6 +243,18 @@ public class Dashboard extends javax.swing.JFrame {
         new CambiarPanel(window, new VistaMostrarCategorias());
     }//GEN-LAST:event_mnuVerArticulosActionPerformed
 
+    private void mnuAbogadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAbogadosActionPerformed
+       new CambiarPanel(window, new VistaAbogados());
+    }//GEN-LAST:event_mnuAbogadosActionPerformed
+
+    private void mnuMostrarAbogadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMostrarAbogadosActionPerformed
+        new CambiarPanel(window, new VistaMostrarAbogados());
+    }//GEN-LAST:event_mnuMostrarAbogadosActionPerformed
+
+    private void mnuEstadisticaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuEstadisticaActionPerformed
+        new CambiarPanel(window, new VistaEstadisticas());
+    }//GEN-LAST:event_mnuEstadisticaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -263,6 +302,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JButton mnuCerrarSesion;
     public static javax.swing.JButton mnuEstadistica;
     public static javax.swing.JButton mnuForo;
+    public static javax.swing.JButton mnuMostrarAbogados;
     public static javax.swing.JButton mnuPrincipal;
     public static javax.swing.JButton mnuUsuarios;
     public static javax.swing.JButton mnuVerArticulos;

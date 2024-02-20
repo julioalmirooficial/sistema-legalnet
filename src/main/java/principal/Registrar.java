@@ -2,7 +2,7 @@ package principal;
 
 import javax.swing.JOptionPane;
 import modelos.ModUsuarios;
-import modelos.ModPersona;
+import atributos.AttrPersona;
 
 public class Registrar extends javax.swing.JFrame {
 
@@ -241,7 +241,7 @@ public class Registrar extends javax.swing.JFrame {
             return;
         }
         ModUsuarios mUsuario = new ModUsuarios();
-        ModPersona mPersona = new ModPersona();
+        AttrPersona mPersona = new AttrPersona();
         mPersona.setTipo(cbxTipo.getSelectedItem().toString());
         mPersona.setNombres(txtNombres.getText());
         mPersona.setUsuario(txtUsuario.getText());

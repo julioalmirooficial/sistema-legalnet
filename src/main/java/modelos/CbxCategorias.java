@@ -29,8 +29,8 @@ public class CbxCategorias extends AttrCategorias{
     public void cbxCategoria(JComboBox<CbxCategorias> cbx) {
         try {
             
-        Conexion conexion = new Conexion();
-        Connection cn = conexion.conectar();
+            Conexion conexion = new Conexion();
+            Connection cn = conexion.conectar();
             String query = "SELECT * FROM categorias ORDER BY id DESC";
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(query);

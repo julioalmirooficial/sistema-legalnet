@@ -1,20 +1,23 @@
+
 package controlador;
 
+import atributos.AttrAbogados;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import atributos.AttrPersona;
-import modelos.ModUsuarios;
-import vistas.VistaUsuarios;
+import modelos.ModAbogados;
+import vistas.VistaAbogados;
+import vistas.VistaMostrarAbogados;
 
-public class CtrUsuarios implements ActionListener {
+public class CtrAbogados implements ActionListener{
+    
+    private AttrAbogados attr;
+    private ModAbogados modData;
+    private VistaAbogados frm;
+    private VistaMostrarAbogados leer;
 
-    private AttrPersona attr;
-    private ModUsuarios modData;
-    private VistaUsuarios frm;
-
-    public CtrUsuarios(AttrPersona attr, ModUsuarios modData, VistaUsuarios frm) {
+    public CtrAbogados(AttrAbogados attr, ModAbogados modData, VistaAbogados frm) {
         this.attr = attr;
         this.modData = modData;
         this.frm = frm;
@@ -24,60 +27,73 @@ public class CtrUsuarios implements ActionListener {
         this.frm.btnModificar.addActionListener(this);
         this.frm.btnLimpiar.addActionListener(this);
     }
+    
+    public CtrAbogados(AttrAbogados attr, ModAbogados modData, VistaMostrarAbogados frm, String read ) {
+        this.attr = attr;
+        this.modData = modData;
+        this.leer = frm;
+    }
 
     public void limpiar() {
         frm.txtBuscar.setText("");
         frm.txtNombres.setText("");
-        frm.txtPassword.setText("");
-        frm.txtUsuario.setText("");
+        frm.txtDireccion.setText("");
+        frm.txtCelular.setText("");
     }
 
     public void listar() {
         DefaultTableModel model;
-        model = modData.listarUsuarios(frm.txtBuscar.getText());
+        model = modData.listar(frm.txtBuscar.getText());
         frm.tablaUsuarios.setModel(model);
         frm.tablaUsuarios.getColumnModel().getColumn(0).setMaxWidth(0);
         frm.tablaUsuarios.getColumnModel().getColumn(0).setMinWidth(0);
         frm.tablaUsuarios.getColumnModel().getColumn(0).setPreferredWidth(0);
         frm.tablaUsuarios.setDefaultEditor(Object.class, null);
     }
+    public void listarAbogados() {
+        DefaultTableModel model;
+        model = modData.listar(leer.txtBuscar.getText());
+        leer.tablaAbogados.setModel(model);
+        leer.tablaAbogados.getColumnModel().getColumn(0).setMaxWidth(0);
+        leer.tablaAbogados.getColumnModel().getColumn(0).setMinWidth(0);
+        leer.tablaAbogados.getColumnModel().getColumn(0).setPreferredWidth(0);
+        leer.tablaAbogados.setDefaultEditor(Object.class, null);
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == frm.btnGuardar || e.getSource() == frm.btnModificar) {
             attr.setNombres(frm.txtNombres.getText());
-            attr.setUsuario(frm.txtUsuario.getText());
-            attr.setPassword(frm.txtPassword.getText());
-            attr.setTipo(frm.cbxTipo.getSelectedItem().toString());
-            attr.setEstado(frm.cbxEstado.getSelectedItem().toString().equals("ACTIVO")?true:false);
+            attr.setDireccion(frm.txtDireccion.getText());
+            attr.setCelular(frm.txtCelular.getText());
 
             if (e.getSource() == frm.btnGuardar) {
                 if (modData.insertar(attr)) {
-                    JOptionPane.showMessageDialog(frm, "Categoria registrado con éxito");
+                    JOptionPane.showMessageDialog(frm, "Abogado registrado con éxito");
                     limpiar();
                     listar();
                 } else {
-                    JOptionPane.showMessageDialog(frm, "Error al registrar categoría", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(frm, "Error al registrar Abogado", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
             if (e.getSource() == frm.btnModificar) {
                 attr.setId(frm.id);
                 if (modData.modificar(attr)) {
-                    JOptionPane.showMessageDialog(frm, "Categoría modificado con éxito");
+                    JOptionPane.showMessageDialog(frm, "Abogado modificado con éxito");
                     limpiar();
                     listar();
                 } else {
-                    JOptionPane.showMessageDialog(frm, "Error al modificar categoría", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(frm, "Error al modificar Abogado", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
         if (e.getSource() == frm.btnEliminar) {
             attr.setId(frm.id);
             if (modData.eliminar(attr)) {
-                JOptionPane.showMessageDialog(frm, "Categoría eliminado con éxito");
+                JOptionPane.showMessageDialog(frm, "Abogado eliminado con éxito");
                 listar();
             } else {
-                JOptionPane.showMessageDialog(frm, "Error al eliminar categoría", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(frm, "Error al eliminar Abogado", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
         if (e.getSource() == frm.btnBuscar) {
@@ -86,6 +102,6 @@ public class CtrUsuarios implements ActionListener {
         if (e.getSource() == frm.btnLimpiar) {
             limpiar();
         }
-        
+
     }
 }

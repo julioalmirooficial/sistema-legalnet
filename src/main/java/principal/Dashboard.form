@@ -56,10 +56,6 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="mnuPrincipal" alignment="0" max="32767" attributes="0"/>
-              <Component id="mnuForo" alignment="0" max="32767" attributes="0"/>
-              <Component id="mnuArticulos" alignment="1" max="32767" attributes="0"/>
-              <Component id="mnuEstadistica" alignment="1" max="32767" attributes="0"/>
-              <Component id="mnuAbogados" alignment="0" max="32767" attributes="0"/>
               <Component id="mnuCerrarSesion" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
@@ -69,9 +65,14 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
-              <Component id="mnuVerArticulos" alignment="0" max="32767" attributes="0"/>
+              <Component id="mnuArticulos" alignment="0" max="32767" attributes="0"/>
+              <Component id="mnuAbogados" max="32767" attributes="0"/>
               <Component id="mnuCategorias" alignment="0" max="32767" attributes="0"/>
               <Component id="mnuUsuarios" alignment="0" max="32767" attributes="0"/>
+              <Component id="mnuEstadistica" alignment="0" max="32767" attributes="0"/>
+              <Component id="mnuVerArticulos" alignment="0" max="32767" attributes="0"/>
+              <Component id="mnuForo" max="32767" attributes="0"/>
+              <Component id="mnuMostrarAbogados" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -84,20 +85,22 @@
                   <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
                   <Component id="mnuPrincipal" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="mnuForo" min="-2" pref="37" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="mnuArticulos" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="mnuEstadistica" min="-2" pref="37" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="mnuAbogados" min="-2" pref="37" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="mnuVerArticulos" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="mnuCategorias" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="mnuUsuarios" min="-2" pref="37" max="-2" attributes="0"/>
-                  <EmptySpace pref="181" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="mnuEstadistica" min="-2" pref="37" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="mnuVerArticulos" min="-2" pref="37" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="mnuForo" min="-2" pref="37" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="mnuMostrarAbogados" min="-2" pref="37" max="-2" attributes="0"/>
+                  <EmptySpace pref="138" max="32767" attributes="0"/>
                   <Component id="mnuCerrarSesion" min="-2" pref="37" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -182,6 +185,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="ESTADISTICA"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuEstadisticaActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
           </AuxValues>
@@ -217,8 +223,11 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="ABOGADOS"/>
+            <Property name="text" type="java.lang.String" value="ADMINISTRAR ABOGADOS"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuAbogadosActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
           </AuxValues>
@@ -234,7 +243,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="USUARIOS"/>
+            <Property name="text" type="java.lang.String" value="AMINISTRAR USUARIOS"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuUsuariosActionPerformed"/>
@@ -288,10 +297,30 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="CATEGORIAS"/>
+            <Property name="text" type="java.lang.String" value="ADMINISTRAR CATEGORIAS"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuCategoriasActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="mnuMostrarAbogados">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="8c" green="4d" red="1" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="ABOGADOS"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuMostrarAbogadosActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
