@@ -69,7 +69,7 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
-              <Component id="mnuConfiguraciones" alignment="0" max="32767" attributes="0"/>
+              <Component id="mnuVerArticulos" alignment="0" max="32767" attributes="0"/>
               <Component id="mnuCategorias" alignment="0" max="32767" attributes="0"/>
               <Component id="mnuUsuarios" alignment="0" max="32767" attributes="0"/>
           </Group>
@@ -92,7 +92,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="mnuAbogados" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="mnuConfiguraciones" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="mnuVerArticulos" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="mnuCategorias" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -197,7 +197,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="ARTICULOS"/>
+            <Property name="text" type="java.lang.String" value="ADMINISTRAR ARTICULOS"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuArticulosActionPerformed"/>
@@ -257,7 +257,7 @@
             <Property name="text" type="java.lang.String" value="CERRAR SESION"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="mnuConfiguraciones">
+        <Component class="javax.swing.JButton" name="mnuVerArticulos">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="8c" green="4d" red="1" type="rgb"/>
@@ -268,8 +268,11 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="CONFIGURACIONES"/>
+            <Property name="text" type="java.lang.String" value="ARTICULOS"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuVerArticulosActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
           </AuxValues>
@@ -302,6 +305,9 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
     </Container>

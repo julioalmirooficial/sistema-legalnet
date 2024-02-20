@@ -7,12 +7,14 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelos.ModArticulos;
 import vistas.VistaArticulos;
+import vistas.VistaMostrarArticulos;
 
 public class CtrArticulos implements ActionListener {
 
     private AttrArticulos attr;
     private ModArticulos modData;
     private VistaArticulos frm;
+    private VistaMostrarArticulos frmArticulos;
 
     public CtrArticulos(AttrArticulos attr, ModArticulos modData, VistaArticulos frm) {
         this.attr = attr;
@@ -25,6 +27,12 @@ public class CtrArticulos implements ActionListener {
         this.frm.btnLimpiar.addActionListener(this);
     }
 
+    public CtrArticulos(AttrArticulos attr, ModArticulos modData, VistaMostrarArticulos frm, String read) {
+        this.attr = attr;
+        this.modData = modData;
+        this.frmArticulos = frm;
+    }
+
     public void limpiar() {
         frm.txtBuscar.setText("");
         frm.txtTitulo.setText("");
@@ -33,7 +41,7 @@ public class CtrArticulos implements ActionListener {
 
     public void listar() {
         DefaultTableModel model;
-        model = modData.listarUsuarios(frm.txtBuscar.getText());
+        model = modData.listar(frm.txtBuscar.getText());
         frm.cbxCategorias.enable();
         frm.tablaUsuarios.setModel(model);
         frm.tablaUsuarios.getColumnModel().getColumn(0).setMaxWidth(0);
@@ -43,6 +51,25 @@ public class CtrArticulos implements ActionListener {
         frm.tablaUsuarios.getColumnModel().getColumn(1).setMinWidth(0);
         frm.tablaUsuarios.getColumnModel().getColumn(1).setPreferredWidth(0);
         frm.tablaUsuarios.setDefaultEditor(Object.class, null);
+    }
+
+    public void listarArticulos(int id, String buscar) {
+        DefaultTableModel model;
+        model = modData.obtenerArticulos(id, buscar);
+        frmArticulos.tablaArticulos.setModel(model);
+        frmArticulos.tablaArticulos.getColumnModel().getColumn(0).setMaxWidth(0);
+        frmArticulos.tablaArticulos.getColumnModel().getColumn(0).setMinWidth(0);
+        frmArticulos.tablaArticulos.getColumnModel().getColumn(0).setPreferredWidth(0);
+        frmArticulos.tablaArticulos.getColumnModel().getColumn(1).setMaxWidth(0);
+        frmArticulos.tablaArticulos.getColumnModel().getColumn(1).setMinWidth(0);
+        frmArticulos.tablaArticulos.getColumnModel().getColumn(1).setPreferredWidth(0);
+        frmArticulos.tablaArticulos.getColumnModel().getColumn(2).setMaxWidth(250);
+        frmArticulos.tablaArticulos.getColumnModel().getColumn(2).setMinWidth(250);
+        frmArticulos.tablaArticulos.getColumnModel().getColumn(2).setPreferredWidth(250);
+        frmArticulos.tablaArticulos.getColumnModel().getColumn(4).setMaxWidth(0);
+        frmArticulos.tablaArticulos.getColumnModel().getColumn(4).setMinWidth(0);
+        frmArticulos.tablaArticulos.getColumnModel().getColumn(4).setPreferredWidth(0);
+        frmArticulos.tablaArticulos.setDefaultEditor(Object.class, null);
     }
 
     @Override

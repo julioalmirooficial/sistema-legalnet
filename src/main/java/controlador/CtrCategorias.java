@@ -7,12 +7,14 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelos.ModCategorias;
 import vistas.VistaCategorias;
+import vistas.VistaMostrarCategorias;
 
 public class CtrCategorias implements ActionListener{
 
     private AttrCategorias attr;
     private ModCategorias modData;
     private VistaCategorias frm;
+    private VistaMostrarCategorias leer;
 
     public CtrCategorias(AttrCategorias attr, ModCategorias modData, VistaCategorias frm) {
         this.attr = attr;
@@ -23,6 +25,12 @@ public class CtrCategorias implements ActionListener{
         this.frm.btnBuscar.addActionListener(this);
         this.frm.btnModificar.addActionListener(this);
         this.frm.btnLimpiar.addActionListener(this);
+    }
+    
+    public CtrCategorias(AttrCategorias attr, ModCategorias modData, VistaMostrarCategorias frm, String read ) {
+        this.attr = attr;
+        this.modData = modData;
+        this.leer = frm;
     }
 
     public void limpiar() {
@@ -38,6 +46,15 @@ public class CtrCategorias implements ActionListener{
         frm.tablaUsuarios.getColumnModel().getColumn(0).setMinWidth(0);
         frm.tablaUsuarios.getColumnModel().getColumn(0).setPreferredWidth(0);
         frm.tablaUsuarios.setDefaultEditor(Object.class, null);
+    }
+    public void listarCategorias() {
+        DefaultTableModel model;
+        model = modData.listarUsuarios(leer.txtBuscar.getText());
+        leer.tablaCategorias.setModel(model);
+        leer.tablaCategorias.getColumnModel().getColumn(0).setMaxWidth(0);
+        leer.tablaCategorias.getColumnModel().getColumn(0).setMinWidth(0);
+        leer.tablaCategorias.getColumnModel().getColumn(0).setPreferredWidth(0);
+        leer.tablaCategorias.setDefaultEditor(Object.class, null);
     }
 
     @Override

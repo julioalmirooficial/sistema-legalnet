@@ -5,6 +5,7 @@ import utilidades.CambiarPanel;
 import vistas.VistaArticulos;
 import vistas.VistaCategorias;
 import vistas.VistaForos;
+import vistas.VistaMostrarCategorias;
 import vistas.VistaUsuarios;
 
 public class Dashboard extends javax.swing.JFrame {
@@ -30,7 +31,7 @@ public class Dashboard extends javax.swing.JFrame {
         mnuAbogados = new javax.swing.JButton();
         mnuUsuarios = new javax.swing.JButton();
         mnuCerrarSesion = new javax.swing.JButton();
-        mnuConfiguraciones = new javax.swing.JButton();
+        mnuVerArticulos = new javax.swing.JButton();
         mnuCategorias = new javax.swing.JButton();
         window = new javax.swing.JPanel();
 
@@ -75,7 +76,7 @@ public class Dashboard extends javax.swing.JFrame {
         mnuArticulos.setBackground(new java.awt.Color(1, 77, 140));
         mnuArticulos.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         mnuArticulos.setForeground(new java.awt.Color(255, 255, 255));
-        mnuArticulos.setText("ARTICULOS");
+        mnuArticulos.setText("ADMINISTRAR ARTICULOS");
         mnuArticulos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuArticulosActionPerformed(evt);
@@ -102,10 +103,15 @@ public class Dashboard extends javax.swing.JFrame {
         mnuCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
         mnuCerrarSesion.setText("CERRAR SESION");
 
-        mnuConfiguraciones.setBackground(new java.awt.Color(1, 77, 140));
-        mnuConfiguraciones.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        mnuConfiguraciones.setForeground(new java.awt.Color(255, 255, 255));
-        mnuConfiguraciones.setText("CONFIGURACIONES");
+        mnuVerArticulos.setBackground(new java.awt.Color(1, 77, 140));
+        mnuVerArticulos.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        mnuVerArticulos.setForeground(new java.awt.Color(255, 255, 255));
+        mnuVerArticulos.setText("ARTICULOS");
+        mnuVerArticulos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuVerArticulosActionPerformed(evt);
+            }
+        });
 
         mnuCategorias.setBackground(new java.awt.Color(1, 77, 140));
         mnuCategorias.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -133,7 +139,7 @@ public class Dashboard extends javax.swing.JFrame {
                     .addComponent(lblUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
                     .addComponent(lblRol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addComponent(mnuConfiguraciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mnuVerArticulos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(mnuCategorias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(mnuUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -155,7 +161,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mnuAbogados, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mnuConfiguraciones, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mnuVerArticulos, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mnuCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -206,6 +212,10 @@ public class Dashboard extends javax.swing.JFrame {
         new CambiarPanel(window, new VistaForos());
     }//GEN-LAST:event_mnuForoActionPerformed
 
+    private void mnuVerArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuVerArticulosActionPerformed
+        new CambiarPanel(window, new VistaMostrarCategorias());
+    }//GEN-LAST:event_mnuVerArticulosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -251,11 +261,11 @@ public class Dashboard extends javax.swing.JFrame {
     public static javax.swing.JButton mnuArticulos;
     public static javax.swing.JButton mnuCategorias;
     private javax.swing.JButton mnuCerrarSesion;
-    public static javax.swing.JButton mnuConfiguraciones;
     public static javax.swing.JButton mnuEstadistica;
     public static javax.swing.JButton mnuForo;
     public static javax.swing.JButton mnuPrincipal;
     public static javax.swing.JButton mnuUsuarios;
-    private javax.swing.JPanel window;
+    public static javax.swing.JButton mnuVerArticulos;
+    public static javax.swing.JPanel window;
     // End of variables declaration//GEN-END:variables
 }
